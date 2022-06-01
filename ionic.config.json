@@ -1,0 +1,10 @@
+{
+  "name": "W2G",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

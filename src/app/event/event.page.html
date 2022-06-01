@@ -1,0 +1,19 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <div id="container" class="container-fluid">
+    <div class="eventInfo">
+      <div class="mb-4">
+        <button (click)="backBtn()" type="button" class="btn btn-price"><i class="fa fa-arrow-left"></i></button>
+      </div>
+      <h2 class="text-center mb-3">{{event.name}}</h2>
+      <h4 class="eventDate"><ion-icon name="calendar-outline"></ion-icon><data value="{{event.date}}"> {{event.date | date:'dd.MM.yyyy HH:mm'}}</data></h4>
+      <div class="mb-3">
+        <a target="_blank" href="{{event.link}}" type="button" class="btn btn-price"><span translate="">priceFrom</span> {{event.price}} <i class="fas fa-euro-sign"></i></a>
+      </div>
+      <p class="eventContent mb-3" [innerHTML]="event.text"></p>
+    </div>
+  </div>
+</ion-content>

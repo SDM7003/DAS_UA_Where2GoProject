@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content *ngIf="user">
+  <div class="container userInfo">
+    <div class="row">
+      <div class="col-md-5 col-lg-3 mb-4 text-center">
+        <img class="avatar img-fluid rounded-circle" src="https://sv010122.ru-host.org/img/{{user.user.avatar}}">
+      </div>
+      <div class="col-md-7 col-lg-9">
+        <div class="mt-2">
+          <h3 class="userName me-3 d-inline">{{user.user.name}}</h3><h5 (click)="lockApp()" class="d-inline me-3"><i style="color: #FF6464" class="fa fa-lock"></i></h5><h5 (click)="logOut()" class="d-inline"><i style="color: #FF6464" class="fa fa-sign-out-alt"></i></h5>
+        </div>
+        <div class="mb-2 accountInfo">
+          <span>Email: </span>{{user.user.email}}</div>
+        <div class="mb-2 accountInfo">
+          <span translate="">userPhone</span>{{user.user.phone}} </div>
+        <div class="mb-2 accountInfo">
+          <span translate="">bDate</span>{{user.user.date_birth | date:'dd.MM.yyyy'}} </div>
+        <div class="mb-2 accountInfo" *ngIf="user.user.role==0">
+          <span class="accountType"><span translate="">accountType</span>Default</span>
+          <br class="d-block d-sm-none"><a class="d-block d-lg-inline" href="">Buy extended version</a>
+        </div>
+        <div class="mb-2 accountInfo" *ngIf="user.user.role==1">
+          <span class="accountType"><span translate="">accountType</span>Premium</span>
+        </div>
+        <div class="mb-2 accountInfo" *ngIf="user.user.role==3">
+          <span class="accountType"><span translate="">accountType</span>Administrator</span>
+        </div>
+        <div class="mb-2 accountInfo" *ngIf="user.user.role==4">
+          <span class="accountType"><span translate="">accountType</span>Director</span>
+        </div>
+        <!--<div class="mb-2 accountInfo">
+          <span>Events attended: </span>{{user.user.places}}
+          </div>-->
+
+        <button type="button" (click)="addPIN()" class="btn btn-outline-secondary w-100" translate="">PINBtnToggle</button>
+        <div *ngIf="togglePINAdd" class="mt-3">
+          <form (ngSubmit)="createPINF()" [formGroup]="createPIN" class="entryForm">
+            <input  formControlName="pinInput"  oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control w-100 text-center" maxlength="4">
+            <button type="submit" [disabled]="!createPIN.valid" class="btn btn-outline-success mt-2 w-100" translate="">createPINSubmit</button>
+          </form>
+        </div>
+        <hr>
+        <h4 translate="">userInterests</h4>
+        <div class="row m-auto">
+          <div *ngFor="let category of categories" class="col-12 col-md-6 col-lg-3">
+            <label class="checkbox">
+              <input type="checkbox" name="usr_category" value="{{category.id}}">
+              <div class="checkbox__text">{{category.name}}</div>
+            </label>
+          </div>
+        </div>
+        <hr>
+        <h4 class="mb-3" translate="">favEvents</h4>
+        <div class="row">
+          <div *ngFor="let event of events" class="col-12 col-sm-6 mb-4">
+            <div (click)="viewCurrentEvent(event.id)" class="card eventCard">
+              <div class="img-container">
+                <img class="eventImg" src="{{event.avatar}}">
+              </div>
+              <h3>{{event.name}}</h3>
+              <h4 class="eventLocation"><ion-icon name="location"></ion-icon>
+                {{event.loc}}</h4>
+              <h4 class="eventDate"><ion-icon name="calendar-outline"></ion-icon><data value="{{event.date}}"> {{event.date | date:'dd.MM.yyyy HH:mm'}}</data></h4>
+              <div class="mb-2">
+                <button  type="button" class="btn btn-price"><span translate="">priceFrom</span> {{event.price}} <i class="fas fa-euro-sign"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

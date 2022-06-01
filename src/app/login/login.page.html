@@ -1,0 +1,47 @@
+<ion-header *ngIf="!isModal">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="no-scroll">
+  <div id="container" class="container">
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="entryForm">
+      <h3 class="text-uppercase text-center" translate="">entryPageTITLE</h3>
+      <div *ngIf="toggleLoginCompl">
+        <div class="mb-4">
+          <label for="email">Email:</label>
+          <input id="email" formControlName="userEmail" class="form-control" type="email" required="">
+        </div>
+        <div class="mb-5">
+          <label for="password" translate="">PasswordInput</label>
+          <input id="password" formControlName="userPass" class="form-control" type="password" required="">
+        </div>
+      </div>
+      <div *ngIf="togglePIN">
+        <div class="mb-4">
+          <form (ngSubmit)="loginByPin()" [formGroup]="pinForm" class="entryForm">
+            <label for="pin">PIN:</label>
+            <input id="pin" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" formControlName="pinInput" class="form-control text-center" type="password" maxlength="4" required="">
+            <button type="submit" [disabled]="!pinForm.valid" class="btn btn-login w-100 mt-4" translate="">enterBtn</button>
+          </form>
+        </div>
+      </div>
+      <div *ngIf="toggleLoginCompl">
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-login w-100" translate="">enterBtn</button>
+      </div>
+      <div *ngIf="((getTokenByUser()!='') && (getTokenByUser()!=null))">
+        <center *ngIf="isModal" class="mt-4 md">
+          <button *ngIf="platform.is('android')"  type="button" class="btn btn-login btn-circule" (click)="biometricAnalise()"><i class="fa fa-fingerprint"></i></button>
+          <button *ngIf="platform.is('ios')"  type="button" class="btn btn-login btn-circule" (click)="biometricAnalise()"><img  class="faceIDIcon" src="assets/icon/face-id--v2.png"/></button>
+          <!--<button *ngIf="userPINCode==null" type="button" (click)="changeAuthMethod()" class="btn btn-login btn-circule ms-4"><img  class="faceIDIcon" src="assets/icon/pincode-icon.png"/></button>-->
+        </center>
+      </div>
+      <div *ngIf="(getTokenByUser()==null)">
+        <center *ngIf="isModal" class="mt-4 md">
+          <button *ngIf="platform.is('android')"  disabled type="button" class="btn btn-login btn-circule"><i class="fa fa-fingerprint"></i></button>
+          <button *ngIf="platform.is('ios')"  disabled type="button" class="btn btn-login btn-circule"><img class="faceIDIcon" src="assets/icon/face-id--v2.png"/></button>
+          <!--<button  type="button" disabled class="btn btn-login btn-circule ms-4"><img  class="faceIDIcon" src="assets/icon/pincode-icon.png"/></button>-->
+        </center>
+      </div>
+    </form>
+  </div>
+</ion-content>

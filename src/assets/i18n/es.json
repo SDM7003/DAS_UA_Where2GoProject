@@ -1,0 +1,23 @@
+{
+  "eventCity": "Por Ciudad",
+  "eventDate": "Por Fecha",
+  "eventCategory": "Por Categoría",
+  "viewAllCategory": "Mostrar Todo",
+  "eventPrice": "Por Precio",
+  "orderMinMax": "De mínimo a máximo",
+  "orderMaxMin": "De máximo a mínimo",
+  "priceFrom": "de",
+  "searchResultBy": "Resultados de búsqueda: ",
+
+  "entryPageTITLE": "Entrar a cuenta",
+  "PasswordInput": "Contraseña:",
+  "enterBtn": "Entrar",
+
+  "userPhone": "Teléfono: ",
+  "bDate": "Fecha de nacimiento: ",
+  "accountType": "Tipo de la Cuenta: ",
+  "userInterests": "Intereses",
+  "favEvents": "Eventos Favoritos",
+  "PINBtnToggle": "Crear un PIN",
+  "createPINSubmit": "Guardar el PIN"
+}

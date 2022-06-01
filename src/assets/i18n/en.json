@@ -1,0 +1,23 @@
+{
+  "eventCity": "By City",
+  "eventDate": "By Date",
+  "eventCategory": "By Category",
+  "viewAllCategory": "View All",
+  "eventPrice": "By Price",
+  "orderMinMax": "From Min to Max",
+  "orderMaxMin": "From Max to Min",
+  "priceFrom": "from",
+  "searchResultBy": "You Results by: ",
+
+  "entryPageTITLE": "Entry to account",
+  "PasswordInput": "Password:",
+  "enterBtn": "Enter",
+
+  "userPhone": "Phone: ",
+  "bDate": "Date of Birthday: ",
+  "accountType": "Account Type: ",
+  "userInterests": "Interests",
+  "favEvents": "Featured Events",
+  "PINBtnToggle": "Create PIN",
+  "createPINSubmit": "Save PIN"
+}

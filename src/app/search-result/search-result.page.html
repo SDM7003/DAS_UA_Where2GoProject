@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container" class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-2 mb-4">
+        <div class="mb-2">
+          <button (click)="backBtn()" type="button" class="btn btn-price"><i class="fa fa-arrow-left"></i></button>
+        </div>
+        <h4><b translate="">searchResultBy</b><span>123</span></h4>
+        <hr>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div *ngFor="let event of events" class="col-12 col-sm-6 mb-4">
+            <div (click)="viewCurrentEvent(event.id)" class="card eventCard">
+              <div class="img-container">
+                <img class="eventImg" src="{{event.avatar}}">
+              </div>
+              <h3>{{event.name}}</h3>
+              <h4 class="eventLocation"><ion-icon name="location"></ion-icon>
+                {{event.loc}}</h4>
+              <h4 class="eventDate"><ion-icon name="calendar-outline"></ion-icon><data value="{{event.date}}"> {{event.date | date:'dd.MM.yyyy HH:mm'}}</data></h4>
+              <div class="mb-2">
+                <button  type="button" class="btn btn-price"><span translate="">priceFrom</span> {{event.price}} <i class="fas fa-euro-sign"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
